@@ -5,12 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
-import { MjauComponent } from './mjau/mjau.component';
+import { CellComponent } from './cell/cell.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BoardComponent
+    BoardComponent,
+    CellComponent
   ],
   imports: [
     BrowserModule,

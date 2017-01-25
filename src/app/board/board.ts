@@ -1,16 +1,23 @@
+import {Cell} from "../cell/cell";
 export class Board {
-  private data: Number[][] = [];
+
+  private board: Array<Array<Cell>> = [];
 
   constructor() {
+    this.resetBoard();
+  }
+
+  private resetBoard() {
     for (let x = 0; x < 10; x++) {
-      this.data[x] = [];
+      this.board[x] = [];
       for (let y = 0; y < 10; y++) {
-        this.data[x][y] = 0;
+        this.board[x][y] = new Cell;
       }
     }
   }
 
-  getBoard() {
-    return this.data;
+  public rows(): Array<Array<Cell>> {
+    return this.board;
   }
+
 }
