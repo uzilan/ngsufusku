@@ -1,4 +1,4 @@
 export class Cell {
 
-  public value: Number = 0;
+  public value: number = 0;
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {Board} from "./board";
 
 @Component({
-  selector: 'app-board',
+  selector: 'suf-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
