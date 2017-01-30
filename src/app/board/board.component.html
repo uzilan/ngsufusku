@@ -1,5 +1,9 @@
-<div class="row" *ngFor="let x of [0,1,2]">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" *ngFor="let y of [0,1,2]">
-    <suf-group [group]="board.groups[3 * x + y]"></suf-group>
-  </div>
+<div>
+  <table>
+    <tr class="row" *ngFor="let x of [0,1,2]">
+      <td class="col" *ngFor="let y of [0,1,2]">
+        <suf-group [group]="board.groups[3 * x + y]"></suf-group>
+      </td>
+    </tr>
+  </table>
 </div>
