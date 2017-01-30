@@ -15,4 +15,8 @@ export class CellComponent implements OnInit {
 
   @Input()
   cell: Cell;
+
+  private valueChanged(): void {
+    this.cell.getBoard().valueChanged(this.cell.getValue(), this.cell.getRow(), this.cell.getCol())
+  }
 }

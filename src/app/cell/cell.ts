@@ -1,10 +1,27 @@
+import {Board} from "../board/board";
 export class Cell {
 
   private value: number = 0;
   private possibles: Array<number> = [];
 
-  constructor() {
+  constructor(private board: Board, private row: number, private col: number) {
     this.resetCell();
+  }
+
+  public getBoard(): Board {
+    return this.board;
+  }
+
+  public getRow(): number {
+    return this.row;
+  }
+
+  public getCol(): number {
+    return this.col;
+  }
+
+  public getValue(): number {
+    return this.value;
   }
 
   private resetCell() {

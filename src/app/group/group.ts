@@ -38,4 +38,8 @@ export class Group {
   add(cell: Cell): void {
     this.cells.push(cell);
   }
+
+  public getCells(): Array<Cell> {
+    return this.cells;
+  }
 }
