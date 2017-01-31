@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { CellComponent } from './cell/cell.component';
 import { GroupComponent } from './group/group.component';
+import { HideZerosPipe } from './cell/hide-zeros.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     CellComponent,
-    GroupComponent
+    GroupComponent,
+    HideZerosPipe
   ],
   imports: [
     BrowserModule,
