@@ -1,6 +1,5 @@
 import {Cell} from "../cell/cell";
 import {Group} from "../group/group";
-import {bindOutputs} from "@angular/compiler/src/view_compiler/event_binder";
 
 export class Board {
 
@@ -12,18 +11,18 @@ export class Board {
   }
 
   private resetBoard() {
-    for (let x = 0; x < 9; x++) {
-      this.board[x] = [];
-      this.groups[x] = new Group;
-      for (let y = 0; y < 9; y++) {
-        this.board[x][y] = new Cell(this, x, y);
+    for (let row = 0; row < 9; row++) {
+      this.board[row] = [];
+      this.groups[row] = new Group;
+      for (let col = 0; col < 9; col++) {
+        this.board[row][col] = new Cell(this, row, col);
       }
     }
 
-    for (let x = 0; x < 9; x++) {
-      for (let y = 0; y < 9; y++) {
-        let groupIndex = Group.getGroupIndex(x, y);
-        this.groups[groupIndex - 1].add(this.board[x][y]);
+    for (let row = 0; row < 9; row++) {
+      for (let col = 0; col < 9; col++) {
+        let groupIndex = Group.getGroupIndex(row, col);
+        this.groups[groupIndex].add(this.board[row][col]);
       }
     }
   }
@@ -41,15 +40,26 @@ export class Board {
   }
 
   valueChanged(value: number, row: number, col: number): void {
-    if (this.contains(this.getRow(row).splice(row, 1), value)) {
-      console.info("row contains " + value);
+    let currentCell = this.board[row][col];
+    this.checkCells(this.getRow(row), currentCell);
+    this.checkCells(this.getCol(col), currentCell);
+    this.checkCells(this.getGroup(Group.getGroupIndex(row, col)), currentCell);
+  }
+
+  private checkCells(cells: Array<Cell>, currentCell: Cell) {
+    let cellsWithoutCurrentCell = cells.filter(cell => cell !== currentCell);
+
+    cellsWithoutCurrentCell.forEach(cell => cell.removePossible(currentCell.getValue()));
+
+    if (this.contains(cellsWithoutCurrentCell, currentCell)) {
+      console.info("row does contains " + currentCell.getValue());
     } else {
-      console.info("row does not contain " + value);
+      console.info("row does not contain " + currentCell.getValue());
     }
   }
 
-  contains(cells: Array<Cell>, value: number): boolean {
-    return cells.some(cell => cell.getValue() === value);
+  contains(cells: Array<Cell>, currentCell: Cell): boolean {
+    return cells.some(cell => cell.getValue() === currentCell.getValue());
   }
 
 }

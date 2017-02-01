@@ -31,4 +31,19 @@ export class Cell {
     }
   }
 
+  removePossible(value: number) {
+    if (this.possiblesContains(value) && this.possibles.length > 1) {
+      this.possibles = this.possibles.filter(pos => pos !== value);
+    }
+  }
+
+  private possiblesContains(value: number): boolean {
+    return this.possibles.some(pos => pos === value);
+  }
+
+  valueChanged() {
+    if (this.value != 0) {
+      this.possibles = [this.value];
+    }
+  }
 }

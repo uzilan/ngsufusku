@@ -10,27 +10,27 @@ export class Group {
 
     if (gb.minX === 0) {
       if (gb.minY === 0) {
-        return 1;
+        return 0;
       } else if (gb.minY === 3) {
-        return 2;
+        return 1;
       } else {
-        return 3;
+        return 2;
       }
     } else if (gb.minX === 3) {
       if (gb.minY === 0) {
-        return 4;
+        return 3;
       } else if (gb.minY === 3) {
-        return 5;
+        return 4;
       } else {
-        return 6;
+        return 5;
       }
     } else {
       if (gb.minY === 0) {
-        return 7;
+        return 6;
       } else if (gb.minY === 3) {
-        return 8;
+        return 7;
       } else {
-        return 9;
+        return 8;
       }
     }
   }
