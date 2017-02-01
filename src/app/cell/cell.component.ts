@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Cell} from "./cell";
+import {BoardService} from "../board/board.service";
 
 @Component({
   selector: 'suf-cell',
@@ -8,7 +9,7 @@ import {Cell} from "./cell";
 })
 export class CellComponent implements OnInit {
 
-  constructor() { }
+  constructor(private boardService: BoardService) { }
 
   ngOnInit() {
   }
@@ -18,6 +19,6 @@ export class CellComponent implements OnInit {
 
   private valueChanged(): void {
     this.cell.valueChanged();
-    this.cell.getBoard().valueChanged(this.cell.getValue(), this.cell.getRow(), this.cell.getCol())
+    this.boardService.getBoard.valueChanged(this.cell.getValue(), this.cell.getRow(), this.cell.getCol())
   }
 }

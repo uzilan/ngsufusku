@@ -1,15 +1,11 @@
-import {Board} from "../board/board";
+import {BoardService} from "../board/board.service";
 export class Cell {
 
   private value: number = 0;
   private possibles: Array<number> = [];
 
-  constructor(private board: Board, private row: number, private col: number) {
+  constructor(private boardService: BoardService, private row: number, private col: number) {
     this.resetCell();
-  }
-
-  public getBoard(): Board {
-    return this.board;
   }
 
   public getRow(): number {
@@ -26,8 +22,8 @@ export class Cell {
 
   private resetCell() {
     this.value = 0;
-    for (let x = 0; x < 9; x++) {
-      this.possibles[x] = x;
+    for (let pos = 0; pos < 9; pos++) {
+      this.possibles[pos] = pos + 1;
     }
   }
 
