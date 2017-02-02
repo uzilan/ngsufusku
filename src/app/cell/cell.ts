@@ -1,6 +1,7 @@
 export class Cell {
 
   private _value: number = 0;
+  private _oldValue: number = 0;
   private _possibles: Array<number> = [];
 
   constructor(private _row: number, private _col: number) {
@@ -23,12 +24,17 @@ export class Cell {
     this._value = value;
   }
 
+  get oldValue(): number {
+    return this._oldValue;
+  }
+
   get possibles(): Array<number> {
     return this._possibles;
   }
 
   private resetCell() {
     this._value = 0;
+    this._oldValue = 0;
     for (let pos = 0; pos < 9; pos++) {
       this._possibles[pos] = pos + 1;
     }
@@ -44,8 +50,10 @@ export class Cell {
     return this._possibles.some(pos => pos === value);
   }
 
-  valueChanged() {
-    if (this._value != 0) {
+  valueChanged(value: number) {
+    this._oldValue = this._value;
+    this._value = value;
+    if (value != 0) {
       this._possibles = [this._value];
     }
   }

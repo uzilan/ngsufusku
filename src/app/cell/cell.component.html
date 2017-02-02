@@ -1,6 +1,6 @@
 <div class="cell">
   <input class="cell-input" type="number" min="0" max="9" [ngModel]="cell.value | hideZeros"
-         (ngModelChange)="cell.value=$event" (keyup)="valueChanged()">
+         (keyup)="valueChanged($event)">
   <div class="cell-possibles">
     {{cell.possibles.join('')}}
   </div>

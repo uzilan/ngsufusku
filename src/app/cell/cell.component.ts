@@ -17,8 +17,9 @@ export class CellComponent implements OnInit {
   @Input()
   cell: Cell;
 
-  private valueChanged(): void {
-    this.cell.valueChanged();
+  private valueChanged( event: KeyboardEvent): void {
+    const value = +event.key;
+    this.cell.valueChanged(value);
     this.boardService.cellValueChanged(this.cell.row, this.cell.col);
   }
 }
