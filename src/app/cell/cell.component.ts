@@ -19,6 +19,6 @@ export class CellComponent implements OnInit {
 
   private valueChanged(): void {
     this.cell.valueChanged();
-    this.boardService.getBoard.valueChanged(this.cell.getValue(), this.cell.getRow(), this.cell.getCol())
+    this.boardService.cellValueChanged(this.cell.row, this.cell.col);
   }
 }

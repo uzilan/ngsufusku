@@ -1,45 +1,52 @@
-import {BoardService} from "../board/board.service";
 export class Cell {
 
-  private value: number = 0;
-  private possibles: Array<number> = [];
+  private _value: number = 0;
+  private _possibles: Array<number> = [];
 
-  constructor(private boardService: BoardService, private row: number, private col: number) {
+  constructor(private _row: number, private _col: number) {
     this.resetCell();
   }
 
-  public getRow(): number {
-    return this.row;
+  get row(): number {
+    return this._row;
   }
 
-  public getCol(): number {
-    return this.col;
+  get col(): number {
+    return this._col;
   }
 
-  public getValue(): number {
-    return this.value;
+  get value(): number {
+    return this._value;
+  }
+
+  set value(value: number) {
+    this._value = value;
+  }
+
+  get possibles(): Array<number> {
+    return this._possibles;
   }
 
   private resetCell() {
-    this.value = 0;
+    this._value = 0;
     for (let pos = 0; pos < 9; pos++) {
-      this.possibles[pos] = pos + 1;
+      this._possibles[pos] = pos + 1;
     }
   }
 
   removePossible(value: number) {
-    if (this.possiblesContains(value) && this.possibles.length > 1) {
-      this.possibles = this.possibles.filter(pos => pos !== value);
+    if (this.possiblesContains(value) && this._possibles.length > 1) {
+      this._possibles = this._possibles.filter(pos => pos !== value);
     }
   }
 
   private possiblesContains(value: number): boolean {
-    return this.possibles.some(pos => pos === value);
+    return this._possibles.some(pos => pos === value);
   }
 
   valueChanged() {
-    if (this.value != 0) {
-      this.possibles = [this.value];
+    if (this._value != 0) {
+      this._possibles = [this._value];
     }
   }
 }

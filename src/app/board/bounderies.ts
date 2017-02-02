@@ -1,20 +1,36 @@
 export class Bounderies {
 
-  minX: number;
-  minY: number;
-  maxX: number;
-  maxY: number;
+  private _minX: number;
+  private _minY: number;
+  private _maxX: number;
+  private _maxY: number;
 
   constructor(minX: number, minY: number, maxX: number, maxY: number) {
-    this.minX = minX;
-    this.minY = minY;
-    this.maxX = maxX;
-    this.maxY = maxY;
+    this._minX = minX;
+    this._minY = minY;
+    this._maxX = maxX;
+    this._maxY = maxY;
+  }
+
+  get minX(): number {
+    return this._minX;
+  }
+
+  get minY(): number {
+    return this._minY;
+  }
+
+  get maxX(): number {
+    return this._maxX;
+  }
+
+  get maxY(): number {
+    return this._maxY;
   }
 
   static getGroupBounderies(row: number, col: number): Bounderies {
 
-    var minX, maxX, minY, maxY;
+    let minX, maxX, minY, maxY;
 
     if (row >= 0 && row < 3) {
       minX = 0;
