@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {By} from '@angular/platform-browser';
+import {DebugElement} from '@angular/core';
 
-import { BoardComponent } from './board.component';
+import {BoardComponent} from './board.component';
+import {BoardService} from "./board.service";
 
 describe('BoardComponent', () => {
   let component: BoardComponent;
@@ -11,9 +12,10 @@ describe('BoardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BoardComponent ]
+      declarations: [BoardComponent],
+      providers: [BoardService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

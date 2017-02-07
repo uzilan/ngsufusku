@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { AlertModule } from 'ng2-bootstrap';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
+import {AlertModule} from 'ng2-bootstrap';
 
-import { AppComponent } from './app.component';
-import { BoardComponent } from './board/board.component';
-import { CellComponent } from './cell/cell.component';
-import { GroupComponent } from './group/group.component';
-import { HideZerosPipe } from './cell/hide-zeros.pipe';
+import {AppComponent} from './app.component';
+import {BoardComponent} from './board/board.component';
+import {CellComponent} from './cell/cell.component';
+import {GroupComponent} from './group/group.component';
+import {HideZerosPipe} from './cell/hide-zeros.pipe';
 
 @NgModule({
   declarations: [
@@ -27,4 +27,5 @@ import { HideZerosPipe } from './cell/hide-zeros.pipe';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
