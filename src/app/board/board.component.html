@@ -2,7 +2,7 @@
   <table>
     <tr class="row" *ngFor="let row of [0,1,2]">
       <td class="col" *ngFor="let col of [0,1,2]">
-        <suf-group [group]="board.groups[3 * row + col]"></suf-group>
+        <app-group [group]="board.groups[3 * row + col]"></app-group>
       </td>
     </tr>
   </table>

@@ -1,10 +1,9 @@
 /* tslint:disable:no-unused-variable */
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {DebugElement} from '@angular/core';
-
-import {CellComponent} from './cell.component';
+import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {CellComponent} from "./cell.component";
 import {BoardService} from "../board/board.service";
+import {HideZerosPipe} from "./hide-zeros.pipe";
+import {FormsModule} from "@angular/forms";
 
 describe('CellComponent', () => {
   let component: CellComponent;
@@ -12,8 +11,9 @@ describe('CellComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CellComponent],
-      providers: [BoardService]
+      declarations: [CellComponent, HideZerosPipe],
+      providers: [BoardService],
+      imports: [FormsModule]
     })
       .compileComponents();
   }));

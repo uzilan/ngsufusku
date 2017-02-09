@@ -2,7 +2,7 @@ import {Bounderies} from "../board/bounderies";
 import {Cell} from "../cell/cell";
 export class Group {
 
-  private cells: Array<Cell> = [];
+  private _cells: Array<Cell> = [];
 
   static getGroupIndex(row: number, col: number): number {
 
@@ -36,10 +36,10 @@ export class Group {
   }
 
   add(cell: Cell): void {
-    this.cells.push(cell);
+    this._cells.push(cell);
   }
 
-  public getCells(): Array<Cell> {
-    return this.cells;
+  get cells(): Array<Cell> {
+    return this._cells;
   }
 }

@@ -3,7 +3,7 @@ import {Board} from "./board";
 import {BoardService} from "./board.service";
 
 @Component({
-  selector: 'suf-board',
+  selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
   providers: [BoardService]

@@ -44,7 +44,7 @@ export class Board {
   }
 
   getGroup(no: number): Array<Cell> {
-    return this._groups[no].getCells();
+    return this._groups[no].cells;
   }
 
 
