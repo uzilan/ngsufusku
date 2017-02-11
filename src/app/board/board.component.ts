@@ -19,4 +19,8 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     this.board = this.boardService.board;
   }
+
+  valueChanged(event: any): void {
+    this.boardService.cellValueChanged(event);
+  }
 }

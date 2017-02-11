@@ -15,11 +15,14 @@ export class BoardService {
     return this._board;
   }
 
-  cellValueChanged(row: number, col: number) {
-    let currentCell = this._board.board[row][col];
-    this.checkCells(this._board.getRow(row), currentCell);
-    this.checkCells(this._board.getCol(col), currentCell);
-    this.checkCells(this._board.getGroup(Group.getGroupIndex(row, col)), currentCell);
+  cellValueChanged(event: any) {
+    let row = this._board.getRow(event.cell.row);
+    let col = this._board.getCol(event.cell.col);
+    let group = this._board.getGroupByRowAndCol(event.cell.row, event.cell.col);
+
+    this.checkCells(row, event.cell);
+    this.checkCells(col, event.cell);
+    this.checkCells(group, event.cell);
   }
 
   private checkCells(cells: Array<Cell>, currentCell: Cell) {

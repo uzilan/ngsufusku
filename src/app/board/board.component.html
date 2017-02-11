@@ -2,7 +2,8 @@
   <table>
     <tr class="row" *ngFor="let row of [0,1,2]">
       <td class="col" *ngFor="let col of [0,1,2]">
-        <app-group [group]="board.groups[3 * row + col]"></app-group>
+        <app-group [group]="board.groups[3 * row + col]"
+          (cellValueChanged)="valueChanged($event)"></app-group>
       </td>
     </tr>
   </table>

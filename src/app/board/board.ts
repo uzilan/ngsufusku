@@ -47,5 +47,9 @@ export class Board {
     return this._groups[no].cells;
   }
 
+  getGroupByRowAndCol(row: number, col: number): Array<Cell> {
+    return this.getGroup(Group.getGroupIndex(row, col));
+  }
+
 
 }

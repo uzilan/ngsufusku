@@ -1,6 +1,7 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Cell} from "./cell";
 import {BoardService} from "../board/board.service";
+
 
 @Component({
   selector: 'app-cell',
@@ -17,9 +18,12 @@ export class CellComponent implements OnInit {
   @Input()
   cell: Cell;
 
+  @Output()
+  cellValueChanged = new EventEmitter();
+
   private valueChanged( event: KeyboardEvent): void {
     const value = +event.key;
     this.cell.valueChanged(value);
-    this.boardService.cellValueChanged(this.cell.row, this.cell.col);
+    this.cellValueChanged.emit({"value": value, "cell": this.cell});
   }
 }
