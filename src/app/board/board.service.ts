@@ -20,20 +20,20 @@ export class BoardService {
     let col = this._board.getCol(event.cell.col);
     let group = this._board.getGroupByRowAndCol(event.cell.row, event.cell.col);
 
-    this.checkCells(row, event.cell);
-    this.checkCells(col, event.cell);
-    this.checkCells(group, event.cell);
+    this.checkCells(row, event.cell, event.value);
+    this.checkCells(col, event.cell, event.value);
+    this.checkCells(group, event.cell, event.value);
   }
 
-  private checkCells(cells: Array<Cell>, currentCell: Cell) {
+  private checkCells(cells: Array<Cell>, currentCell: Cell, value: number) {
     let cellsWithoutCurrentCell = cells.filter(cell => cell !== currentCell);
 
-    cellsWithoutCurrentCell.forEach(cell => cell.removePossible(currentCell.value));
-
-    if (this.contains(cellsWithoutCurrentCell, currentCell)) {
-      console.info("row does contains " + currentCell.value);
-    } else {
-      console.info("row does not contain " + currentCell.value);
+    if (currentCell.value !== value) {
+      if (value) {
+        cellsWithoutCurrentCell.forEach(cell => cell.removePossible(value));
+      } else {
+        cellsWithoutCurrentCell.forEach(cell => cell.addPossible(currentCell.value));
+      }
     }
   }
 

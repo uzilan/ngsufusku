@@ -1,6 +1,7 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Cell} from "./cell";
 import {BoardService} from "../board/board.service";
+import {isNumber} from "util";
 
 
 @Component({
@@ -10,7 +11,8 @@ import {BoardService} from "../board/board.service";
 })
 export class CellComponent implements OnInit {
 
-  constructor(private boardService: BoardService) { }
+  constructor(private boardService: BoardService) {
+  }
 
   ngOnInit() {
   }
@@ -21,9 +23,14 @@ export class CellComponent implements OnInit {
   @Output()
   cellValueChanged = new EventEmitter();
 
-  private valueChanged( event: KeyboardEvent): void {
+  private valueChanged(event: KeyboardEvent): void {
+    if (String(event.key) === "Tab") {
+      return;
+    }
+
     const value = +event.key;
-    this.cell.valueChanged(value);
+
     this.cellValueChanged.emit({"value": value, "cell": this.cell});
+    this.cell.valueChanged(value);
   }
 }
